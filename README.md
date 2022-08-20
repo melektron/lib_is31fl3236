@@ -6,7 +6,7 @@ This library (and repo) is not ready and currently under development. It will be
 
 # Lib IS31FL3236
 
-Lib IS31FL3236 is a simple library to more easily controll the ISSI IS31FL3236 and IS31FL3236A constant current LED driver ICs.
+Lib IS31FL3236 is a simple C++ library to more easily controll the ISSI IS31FL3236 and IS31FL3236A constant current LED driver ICs.
 
 The library works with IDEs based on the Arduino framework but is mostly targeted to the PlatformIO IDE. The Arduino IDE should also work.
 
