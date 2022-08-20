@@ -53,7 +53,7 @@ void IS::writeRegisters(uint8_t _reg_start, uint8_t _val, size_t _len)
     Wire.endTransmission();
 }
 
-IS::IS(uint8_t _addr, int _psdb = -1, int _pscl = -1, int _psda = -1)
+IS::IS(uint8_t _addr, int _psdb, int _pscl, int _psda)
     : devc_addr(_addr),
       psdb(_psdb),
       pscl(_pscl),
@@ -61,7 +61,7 @@ IS::IS(uint8_t _addr, int _psdb = -1, int _pscl = -1, int _psda = -1)
 {
 }
 
-void IS::initialize(bool _state = false, uint8_t _cur_div = 4, uint8_t _dc = 0)
+void IS::initialize(bool _state, uint8_t _cur_div, uint8_t _dc)
 {
     // current devider can only be 1, 2, 3 or 4
     if (_cur_div < 1 || _cur_div > 4)
@@ -119,7 +119,7 @@ void IS::hardEnable()
     SDB_H();
 }
 
-void IS::configure(uint8_t _ch, int8_t _state = -1, int8_t _cur_div = -1, bool _update = false)
+void IS::configure(uint8_t _ch, int8_t _state, int8_t _cur_div, bool _update)
 {
     // check bounds of channel and provided configuration values
     if (
@@ -141,7 +141,7 @@ void IS::configure(uint8_t _ch, int8_t _state = -1, int8_t _cur_div = -1, bool _
         update();
 }
 
-void IS::multiconfigure(uint8_t _ch_first, uint8_t _ch_last, int8_t _state = -1, int8_t _cur_div = -1, bool _update = false)
+void IS::multiconfigure(uint8_t _ch_first, uint8_t _ch_last, int8_t _state, int8_t _cur_div, bool _update)
 {
     // check bounds of channels and provided configuration values
     if (
@@ -171,7 +171,7 @@ void IS::multiconfigure(uint8_t _ch_first, uint8_t _ch_last, int8_t _state = -1,
         update();
 }
 
-void IS::write(uint8_t _ch, uint8_t _dc, bool _update = false)
+void IS::write(uint8_t _ch, uint8_t _dc, bool _update)
 {
     if (_ch > 36 || _ch < 1)
         return;
@@ -181,7 +181,7 @@ void IS::write(uint8_t _ch, uint8_t _dc, bool _update = false)
         update();
 }
 
-void IS::multiwrite(uint8_t _ch_first, uint8_t _ch_last, uint8_t _dc, bool _update = false)
+void IS::multiwrite(uint8_t _ch_first, uint8_t _ch_last, uint8_t _dc, bool _update)
 {
     // chech that the channel numbers are in bounds
     if (
