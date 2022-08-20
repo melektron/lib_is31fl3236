@@ -10,7 +10,7 @@ Lib IS31FL3236 is a simple library to more easily controll the ISSI IS31FL3236 a
 
 The library works with IDEs based on the Arduino framework but is mostly targeted to the PlatformIO IDE. The Arduino IDE should also work.
 
-# IS32FL3236(a)
+# IS31FL3236(a)
 
 The IS31FL3236(A) IC is a simple I2C device that can drive up to 36 individual channels with a constant current of up to 38 mA per channel (given there is sufficient heat dissipation).
 
