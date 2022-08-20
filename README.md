@@ -1,6 +1,6 @@
 # Disclaimer
 
-This library (and repo) is not ready and currently under development. It will be ready and working in the next couple of days.
+This repository is under construction. The most important functionality is already working, but some things might change and more features will be added. Also some more documentation and examples will be added in the next couple of days.
 
 <br><br>
 
