@@ -198,6 +198,25 @@ void IS::multiwrite(uint8_t _ch_first, uint8_t _ch_last, uint8_t _dc, bool _upda
         update();
 }
 
+void IS::buffermultiwrite(uint8_t _ch_first, uint8_t _ch_last, uint8_t *_dcs, bool _update)
+{
+    // chech that the channel numbers are in bounds
+    if (
+        _ch_first < 1 || _ch_first > 36 ||
+        _ch_last < 1 || _ch_last > 36)
+        return;
+
+    // identify which channel number is the smaller and which one is the larger
+    uint8_t chl = min(_ch_first, _ch_last);
+    uint8_t chh = max(_ch_first, _ch_last);
+
+    // write the value to the registers using address auto increment
+    writeRegisters(chl, _dcs, chh - chl + 1);
+
+    if (_update)
+        update();
+}
+
 void IS::reset()
 {
     writeRegister(0x4f, 0x00);

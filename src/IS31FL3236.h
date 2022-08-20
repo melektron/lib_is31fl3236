@@ -199,6 +199,24 @@ public:
     void multiwrite(uint8_t _ch_first, uint8_t _ch_last, uint8_t _dc, bool _update = false);
 
     /**
+     * @brief sets the pwm duty cycle of a RANGE of channels to a number of different values
+     * stored in an array of bytes. _dcs is a pointer to the start of the array containing the duty cycle
+     * for the channels. The bytes will be written to the channels in numeric order starting with the 
+     * lower of the provided channel numbers and working up to the higher channel number, no matter which
+     * one is passed to _ch_first and _ch_last. To avoid confusion it is still recommended to pass the lower 
+     * channel number to _ch_first and the higher channel number to _ch_last
+     *
+     * @param _ch_first channel number of the first channel (1 - 36)
+     * @param _ch_last channel number of the last channel (1 - 36)
+     * @param _dcs pointer to the duty cycle bytes
+     * @param _update flag defining whether the values should be updated immediately. By default,
+     * the changes will only have an effect after calling update(). When set to true, update is called
+     * internally. When writing to multiple LEDs, it is advised to leave this at false and call update()
+     * once at the end.
+     */
+    void buffermultiwrite(uint8_t _ch_first, uint8_t _ch_last, uint8_t *_dcs, bool _update = false);
+
+    /**
      * @brief resets the led driver and all registers to their
      * default values by writing to the reset register
      */
