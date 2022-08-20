@@ -21,7 +21,7 @@ protected:
     // address
     uint8_t devc_addr;
     // pin configuration
-    int psdb, pscl, psda;
+    int psdb;
 
     // constants:
     static constexpr int led_count = 36;
@@ -83,7 +83,7 @@ public:
      * @param _pscl (optional) SCL pin setting for microcontrollers that support pin remapping
      * @param _psda (optional) SDA pin setting for microcontrollers that support pin remapping
      */
-    IS(uint8_t _addr, int _psdb = -1, int _pscl = -1, int _psda = -1);
+    IS(uint8_t _addr, int _psdb = -1);
 
     /**
      * @brief initializes the led controller and all LED channels to the provided values.

@@ -53,11 +53,9 @@ void IS::writeRegisters(uint8_t _reg_start, uint8_t _val, size_t _len)
     Wire.endTransmission();
 }
 
-IS::IS(uint8_t _addr, int _psdb, int _pscl, int _psda)
+IS::IS(uint8_t _addr, int _psdb)
     : devc_addr(_addr),
-      psdb(_psdb),
-      pscl(_pscl),
-      psda(_psda)
+      psdb(_psdb)
 {
 }
 
