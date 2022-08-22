@@ -5,7 +5,7 @@ www.elektron.work
 20.08.22, 21:12
 
 A C++ HAL library to interact with the IS31FL3236(A) constant
-current LED driver using the Arduino framework. 
+current LED driver using the Arduino framework.
 */
 
 #pragma once
@@ -85,6 +85,10 @@ public:
      */
     IS(uint8_t _addr, int _psdb = -1);
 
+    // copying and moving of IS class instances is not allowed
+    IS(const IS &) = delete;
+    IS(IS &&) = delete;
+
     /**
      * @brief initializes the led controller and all LED channels to the provided values.
      * the default state for all LEDs is OFF with the current setting set to
@@ -120,8 +124,8 @@ public:
     /**
      * @brief reenables all current outputs by writing to the shutdown
      * register. (aka disable soft shutdown)
-     * 
-     * NOTE: if the controller is in hard shutdown mode, hard shutdown mode 
+     *
+     * NOTE: if the controller is in hard shutdown mode, hard shutdown mode
      * will be disabled before soft enabeling the outputs
      *
      */
@@ -130,17 +134,17 @@ public:
     /**
      * @brief engages a hard shutdown of the controller by pulling
      * the SDB pin low if the SDB pin is configured for the class instance
-     * 
+     *
      */
     void hardShutdown();
 
     /**
      * @brief disengages a hard shutdown of the controller by pulling
      * the SDB pin high if the SDB pin is configured for the class instance.
-     * 
+     *
      * NOTE: this will not soft enable outputs if normal (soft) shutdown
      * has been engaged before the hard shutdown.
-     * 
+     *
      */
     void hardEnable();
 
@@ -201,9 +205,9 @@ public:
     /**
      * @brief sets the pwm duty cycle of a RANGE of channels to a number of different values
      * stored in an array of bytes. _dcs is a pointer to the start of the array containing the duty cycle
-     * for the channels. The bytes will be written to the channels in numeric order starting with the 
+     * for the channels. The bytes will be written to the channels in numeric order starting with the
      * lower of the provided channel numbers and working up to the higher channel number, no matter which
-     * one is passed to _ch_first and _ch_last. To avoid confusion it is still recommended to pass the lower 
+     * one is passed to _ch_first and _ch_last. To avoid confusion it is still recommended to pass the lower
      * channel number to _ch_first and the higher channel number to _ch_last
      *
      * @param _ch_first channel number of the first channel (1 - 36)
