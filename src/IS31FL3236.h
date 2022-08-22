@@ -94,7 +94,7 @@ public:
      * @param _cur_div current devider for all LEDs (1, 2, 3 or 4)
      * @param _dc pwm duty cycle of the LEDs
      */
-    void initialize(bool _state = false, uint8_t _cur_div = 4, uint8_t _dc = 0);
+    void initialize(bool _state = false, uint8_t _cur_div = 1, uint8_t _dc = 0);
 
     /**
      * @brief makes any changes previously written to the PWM and
